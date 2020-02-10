@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-sm-5">
+    <form (ngSubmit)="onSearch(f)" #f="ngForm">
+      <div class="input-group-append">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Search for books"
+          id="search"
+          name="search"
+          ngModel
+          required
+        />
+        <button class="btn btn-info " type="submit" [disabled]="!f.valid">
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<br />
+
+<div *ngIf="isLoading" style="position: relative;">
+  <app-loading-spinner
+    style="position: absolute; position: absolute;
+    left: 15%;"
+  ></app-loading-spinner>
+</div>
+
+<div class="row">
+  <div class="col-sm">
+    <div *ngIf="!isLoading">
+      <app-book-search-list
+        *ngFor="let book of books"
+        [book]="book"
+      ></app-book-search-list>
+    </div>
+  </div>
+  <div class="col-md-7" style="margin-top: -62px;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

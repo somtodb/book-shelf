@@ -1,0 +1,12 @@
+/* Mobile Styles */
+@media (max-width: 640px) {
+  a {
+    z-index: 1;
+  }
+}
+
+.list-group-item {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-gap: 0;
+}

@@ -1,0 +1,10 @@
+/* Mobile Styles */
+@media (max-width: 768px) {
+}
+
+/* Mobile Styles */
+@media (max-width: 640px) {
+  h3 {
+    display: none;
+  }
+}

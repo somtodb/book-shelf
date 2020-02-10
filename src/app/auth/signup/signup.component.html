@@ -1,0 +1,46 @@
+<div>
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <form
+    #signupForm="ngForm"
+    (ngSubmit)="onSignup(signupForm)"
+    *ngIf="!isLoading"
+  >
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        ngModel
+        name="email"
+        required
+        email
+        placeholder="Enter email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        ngModel
+        name="password"
+        required
+        password
+        minlength="6"
+        placeholder="Password"
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!signupForm.valid"
+    >
+      Signup
+    </button>
+  </form>
+</div>

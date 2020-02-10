@@ -1,0 +1,15 @@
+<div *ngIf="book && !isLoading">
+  <a
+    [routerLink]="['/books', book.id]"
+    routerLinkActive="active"
+    style="cursor: pointer; text-decoration: none; color: black;"
+    class="list-group-item"
+  >
+    <img
+      src="{{ book.volumeInfo.imageLinks.thumbnail }}"
+      alt="{{ book.volumeInfo.title }}"
+      style="max-height: 50px;"
+    />
+    <span style="padding-left: 5px;">{{ book.volumeInfo.title }}</span>
+  </a>
+</div>

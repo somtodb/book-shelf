@@ -1,0 +1,6 @@
+/* Mobile Styles */
+@media (max-width: 993px) {
+  .nav-item .divider {
+    display: none;
+  }
+}

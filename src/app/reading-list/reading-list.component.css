@@ -1,0 +1,15 @@
+.ion {
+  padding: 6px;
+}
+
+.ion:hover {
+  background-color: lightgray;
+  border-radius: 3px;
+  padding: 6px;
+}
+
+.list-group-item {
+  display: grid;
+  grid-template-columns: 1fr 15fr 0fr;
+  grid-gap: 0;
+}
