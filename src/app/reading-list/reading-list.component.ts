@@ -10,39 +10,38 @@ import { DataStoreService } from "../shared/datastore.service";
   styleUrls: ["./reading-list.component.css"]
 })
 export class ReadingListComponent implements OnInit, OnDestroy {
-  booklist: Book[];
+  books: Book[];
   private sub: Subscription;
 
   constructor(private dataStoreService: DataStoreService) {}
 
   ngOnInit() {
-    // this.sub = this.dataStoreService.getBooks().subscribe(books => {
-    //   this.booklist = books;
-    // });
+    this.sub = this.dataStoreService.getBooks().subscribe(res => {
+      this.books = res;
+    });
 
-    this.booklist = this.dataStoreService.getBooks();
-    this.sub = this.dataStoreService
-      .fetchReadingList()
-      .subscribe((books: Book[]) => {
-        this.booklist = books;
-      });
+    // this.sub = this.dataStoreService
+    //   .fetchReadingList()
+    //   .subscribe((books: Book[]) => {
+    //     this.booklist = books;
+    //   });
   }
 
-  deleteConfirmation(i) {
+  deleteConfirmation(key: string) {
     const userValue = confirm(
       "Are you sure you want to delete book from Reading list?"
     );
 
     if (userValue === true) {
-      this.onRemoveBook(i);
+      this.onRemoveBook(key);
       return true;
     } else {
       return false;
     }
   }
 
-  onRemoveBook(index: number) {
-    this.dataStoreService.removeBook(index);
+  onRemoveBook(key: string) {
+    this.dataStoreService.removeBook(key);
   }
 
   ngOnDestroy() {
