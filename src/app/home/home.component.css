@@ -1,0 +1,39 @@
+.landing {
+  position: relative;
+  background: url(./books-in-black-wooden-book-shelf.jpg) no-repeat center
+    center/cover;
+  height: 100vh;
+}
+
+.link {
+  font-size: larger;
+  color: aquamarine;
+  padding-right: 10px;
+}
+
+.link:hover {
+  /* color: lightgray; */
+  text-decoration: none;
+}
+
+.ion {
+  /* font-size: 32px; */
+  columns: #fff;
+  color: #fff !important;
+}
+
+.user-buttons {
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  margin: 0 5px;
+}
+
+/* display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; */

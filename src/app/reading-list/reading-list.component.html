@@ -1,33 +1,50 @@
-<div class="row">
-  <div class="col-sm">
-    <div *ngFor="let book of books">
-      <a *ngIf="book" class="list-group-item">
-        <img
-          src="{{ book.volumeInfo.imageLinks.smallThumbnail }}"
-          alt=""
-          style="max-height: 50px; padding-right: 10px;"
-        />
-        <span
-          >{{ book.volumeInfo.title }}, by {{ book.volumeInfo.authors }}.</span
-        >
-        <span
-          style="float: right; padding: 10px; display: grid;
-        grid-auto-flow: column;
-        grid-column-gap: 25px"
-        >
-          <i
-            class="ion ion-md-book"
-            title="Preview"
-            style="cursor: pointer;"
-          ></i>
-          <i
-            class="ion ion-md-trash"
-            title="Delete"
-            style="color: red; cursor: pointer;"
-            (click)="deleteConfirmation(book.key)"
-          ></i>
-        </span>
-      </a>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div *ngIf="books && books.length > 0; else notifyInfo">
+        <div class="jumbotron">
+          <h3 class="display-4">Books to Read</h3>
+        </div>
+        <a *ngFor="let book of books" class="list-group-item">
+          <img
+            src="{{ book.volumeInfo.imageLinks.smallThumbnail }}"
+            alt=""
+            style="max-height: 50px; padding-right: 10px;"
+          />
+          <span
+            >{{ book.volumeInfo.title }}, by
+            {{ book.volumeInfo.authors }}.</span
+          >
+          <span
+            style="float: right; padding: 10px; display: grid;
+          grid-auto-flow: column;
+          grid-column-gap: 25px"
+          >
+            <i
+              class="ion ion-md-book"
+              title="Preview"
+              style="cursor: pointer;"
+            ></i>
+            <i
+              class="ion ion-md-trash"
+              title="Delete"
+              style="color: red; cursor: pointer;"
+              (click)="deleteConfirmation(book.key)"
+            ></i>
+          </span>
+        </a>
+      </div>
+      <ng-template #notifyInfo>
+        <div class="jumbotron">
+          <a
+            class="display-4"
+            routerLink="/books"
+            style="text-decoration: none; color: black;"
+            >Add books <span class="ion ion-md-arrow-forward"></span
+          ></a>
+          <p>No books added.</p>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

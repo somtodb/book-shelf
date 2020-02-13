@@ -1,7 +1,8 @@
-<div>
+<div class="container">
   <div *ngIf="isLoading" style="text-align: center;">
     <app-loading-spinner></app-loading-spinner>
   </div>
+  <h2 style="padding-bottom: 20px;">Signup</h2>
   <form
     #signupForm="ngForm"
     (ngSubmit)="onSignup(signupForm)"
@@ -42,5 +43,6 @@
     >
       Signup
     </button>
+    <a class="login-redirect" routerLink="/login">I have have an account!</a>
   </form>
 </div>

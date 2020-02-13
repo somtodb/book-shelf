@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { AuthService } from "../auth/auth.service";
+import { Router, RouterEvent, NavigationEnd } from "@angular/router";
+import { filter } from "rxjs/operators";
 
 @Component({
   selector: "app-header",
@@ -8,18 +10,22 @@ import { AuthService } from "../auth/auth.service";
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  navbarOpen = false;
   isAuthenticated = false;
+  navbarOpen = false;
   private sub: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    this.sub = this.authService.userData.subscribe(user => {
-      this.isAuthenticated = !!user;
-      console.log(!user);
-      console.log(!!user);
-    });
+    this.sub = this.router.events
+      .pipe(filter((e: RouterEvent) => e instanceof NavigationEnd))
+      .subscribe(() => {
+        this.authService.userData.subscribe(user => {
+          this.isAuthenticated = !!user;
+          console.log(!user);
+          console.log(!!user);
+        });
+      });
   }
 
   onLogout() {

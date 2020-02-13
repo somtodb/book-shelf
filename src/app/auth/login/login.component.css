@@ -1,0 +1,13 @@
+.container {
+  margin-top: 100px;
+}
+
+.signup-redirect {
+  text-decoration: none;
+  color: black;
+  padding-left: 10px;
+}
+
+.signup-redirect:hover {
+  color: #0597f2;
+}

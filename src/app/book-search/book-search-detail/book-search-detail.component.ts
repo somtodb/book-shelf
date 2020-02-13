@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 
 import { BookSearchService } from "../book-search.service";
@@ -23,7 +23,8 @@ export class BookSearchDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private bookSearchService: BookSearchService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -50,7 +51,8 @@ export class BookSearchDetailComponent implements OnInit, OnDestroy {
 
   onAddToList() {
     if (this.isAuthenticated === false) {
-      alert("Login or Signup to add book to reading list.");
+      alert("Login or Signup to add books to reading list.");
+      this.router.navigate(["/login"]);
     } else {
       this.bookSearchService.addBookToReadingList(this.book);
     }

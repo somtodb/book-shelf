@@ -28,7 +28,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
         console.log("You have succesfully Signed up!", res);
-        this.router.navigate(["reading-list"]);
+        this.router.navigate(["books"]);
       })
       .catch(err => {
         console.log("Unsuccessful signup.", err.message);
@@ -49,6 +49,14 @@ export class AuthService {
         alert("Invalid credentials!");
       });
   }
+
+  // isLoggedIn() {
+  //   if (this.userData == null) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 
   // Logout User
   logout() {
