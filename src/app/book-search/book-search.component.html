@@ -6,7 +6,7 @@
           <input
             type="search"
             class="form-control"
-            placeholder="Search for books"
+            placeholder="Search by book title, authors or ISBN"
             id="search"
             name="search"
             ngModel
@@ -23,7 +23,7 @@
 
   <div *ngIf="isLoading" style="position: relative;">
     <app-loading-spinner
-      style="position: absolute; position: absolute;
+      style="position: absolute;
       left: 15%;"
     ></app-loading-spinner>
   </div>

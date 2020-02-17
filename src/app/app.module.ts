@@ -24,6 +24,7 @@ import { LoginComponent } from "./auth/login/login.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 // import { AlertComponent } from "./shared/alert/alert.component";
 import { HomeComponent } from "./home/home.component";
+import { ErrorComponent } from "./error/error.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HomeComponent } from "./home/home.component";
     HeaderComponent,
     LoginComponent,
     SignupComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ErrorComponent
     // AlertComponent
   ],
   imports: [

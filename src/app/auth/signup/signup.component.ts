@@ -9,6 +9,7 @@ import { AuthService } from "../auth.service";
 })
 export class SignupComponent implements OnInit {
   isLoading = false;
+  errorAlert: string = null;
 
   constructor(private authService: AuthService) {}
 
@@ -29,8 +30,15 @@ export class SignupComponent implements OnInit {
         this.isLoading = false;
       } else {
         setTimeout(() => {
+          this.errorAlert =
+            "This email address is already in use by another account.";
+
+          setTimeout(() => {
+            this.errorAlert = "";
+          }, 5000);
+
           this.isLoading = false;
-        }, 500);
+        }, 1000);
       }
     });
     form.reset();

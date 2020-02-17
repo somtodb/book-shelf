@@ -1,6 +1,31 @@
+.navbar-brand img {
+  margin-top: -10px;
+}
+
+nav .navbar-toggler:focus {
+  outline: none;
+}
+
+.logout:hover {
+  color: red !important;
+}
+
+.ion-md-exit {
+  display: none;
+}
+
 /* Mobile Styles */
 @media (max-width: 993px) {
   .nav-item .divider {
     display: none;
+  }
+
+  .logout {
+    display: none;
+  }
+
+  .ion-md-exit {
+    display: block;
+    margin-top: 12px;
   }
 }

@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Output } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { Router } from "@angular/router";
+import { ErrorService } from "../error/error.service";
 
 export interface AuthResponseData {
   idToken: string;
@@ -17,8 +18,13 @@ export interface AuthResponseData {
 })
 export class AuthService {
   userData: Observable<firebase.User>;
+  error: string = null;
 
-  constructor(private router: Router, private afAuth: AngularFireAuth) {
+  constructor(
+    private router: Router,
+    private afAuth: AngularFireAuth,
+    private errorService: ErrorService
+  ) {
     this.userData = afAuth.authState;
   }
 
@@ -30,9 +36,12 @@ export class AuthService {
         console.log("You have succesfully Signed up!", res);
         this.router.navigate(["books"]);
       })
-      .catch(err => {
-        console.log("Unsuccessful signup.", err.message);
-        alert("This email in already use by another user.");
+      .catch(error => {
+        console.log("Unsuccessful signup.", error.message);
+        // alert("This email is already in use by another user.");
+
+        // this.errorService.handleError(error);
+        // return throwError(error);
       });
   }
 
@@ -41,12 +50,15 @@ export class AuthService {
     this.afAuth.auth
       .signInWithEmailAndPassword(email, password)
       .then(res => {
-        console.log("Login successful!");
+        console.log("Login successful!", res);
         this.router.navigate(["reading-list"]);
       })
-      .catch(err => {
-        console.log("Invalid credentials!", err.message);
-        alert("Invalid credentials!");
+      .catch(error => {
+        console.log("Invalid credentials!", error.message);
+        // alert("Invalid credentials!");
+
+        // this.errorService.handleError(error);
+        // return throwError(error);
       });
   }
 

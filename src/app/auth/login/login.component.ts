@@ -1,15 +1,8 @@
-import {
-  Component,
-  OnInit,
-  ComponentFactoryResolver,
-  ViewChild
-} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth.service";
-// import { ModalDirective } from "src/app/shared/modal/modal.directive";
-// import { AlertComponent } from "../../shared/alert/alert.component";
 
 @Component({
   selector: "app-login",
@@ -18,6 +11,8 @@ import { AuthService } from "../auth.service";
 })
 export class LoginComponent implements OnInit {
   isLoading = false;
+  errorAlert: string = null;
+
   // @ViewChild(ModalDirective, { static: false }) alertHost: ModalDirective;
 
   private sub: Subscription;
@@ -42,26 +37,15 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
       } else {
         setTimeout(() => {
+          this.errorAlert = "Invalid login credentials!";
+
+          setTimeout(() => {
+            this.errorAlert = "";
+          }, 5000);
           this.isLoading = false;
-        }, 500);
+        }, 1000);
       }
     });
     form.reset();
   }
-
-  // private showErrorAlert(message: string) {
-  //   const alertCmpFactory = this.cmpFactoryResolver.resolveComponentFactory(
-  //     AlertComponent
-  //   );
-  //   const hostViewContainerRef = this.alertHost.viewContainerRef;
-  //   hostViewContainerRef.clear();
-
-  //   const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);
-
-  //   componentRef.instance.message = message;
-  //   this.sub = componentRef.instance.close.subscribe(() => {
-  //     this.sub.unsubscribe();
-  //     hostViewContainerRef.clear();
-  //   });
-  // }
 }

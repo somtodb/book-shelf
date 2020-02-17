@@ -1,13 +1,16 @@
 <div class="container">
+  <div class="alert alert-danger" *ngIf="errorAlert">
+    <p>{{ errorAlert }}</p>
+  </div>
   <div *ngIf="isLoading" style="text-align: center;">
     <app-loading-spinner></app-loading-spinner>
   </div>
-  <h2 style="padding-bottom: 20px;">Signup</h2>
   <form
     #signupForm="ngForm"
     (ngSubmit)="onSignup(signupForm)"
     *ngIf="!isLoading"
   >
+    <h2 style="padding-bottom: 20px;">Signup</h2>
     <div class="form-group">
       <label for="email">Email address</label>
       <input

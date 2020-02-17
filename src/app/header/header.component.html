@@ -1,6 +1,8 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">Bookup</a>
+    <a class="navbar-brand" routerLink="/"
+      ><img src="assets/library.png" alt="" /> Bookshelf</a
+    >
 
     <button
       class="navbar-toggler"
@@ -55,7 +57,14 @@
           class="nav-item mr-auto"
           style="cursor: pointer;"
         >
-          <a class="nav-link" (click)="onLogout()">Logout</a>
+          <a class="nav-link logout" (click)="onLogout()">
+            Log out
+          </a>
+          <span
+            class="ion ion-md-exit"
+            title="Logout"
+            (click)="onLogout()"
+          ></span>
         </li>
       </ul>
     </div>

@@ -52,7 +52,6 @@ export class BookSearchDetailComponent implements OnInit, OnDestroy {
   onAddToList() {
     if (this.isAuthenticated === false) {
       alert("Login or Signup to add books to reading list.");
-      this.router.navigate(["/login"]);
     } else {
       this.bookSearchService.addBookToReadingList(this.book);
     }
