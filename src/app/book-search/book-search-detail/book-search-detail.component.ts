@@ -23,8 +23,7 @@ export class BookSearchDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private bookSearchService: BookSearchService,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {}
 
   ngOnInit() {

@@ -11,6 +11,7 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { AuthGuard } from "./auth/auth.guard";
 import { UserAccessGuard } from "./auth/auth2.guard";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 
 const appRoutes: Routes = [
   {
@@ -39,7 +40,9 @@ const appRoutes: Routes = [
     component: LoginComponent,
     canActivate: [UserAccessGuard],
     runGuardsAndResolvers: "always"
-  }
+  },
+  { path: "not-found", component: PageNotFoundComponent },
+  { path: "**", redirectTo: "/not-found" }
 ];
 
 @NgModule({

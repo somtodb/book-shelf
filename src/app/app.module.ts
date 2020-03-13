@@ -25,11 +25,14 @@ import { SignupComponent } from "./auth/signup/signup.component";
 // import { AlertComponent } from "./shared/alert/alert.component";
 import { HomeComponent } from "./home/home.component";
 import { ErrorComponent } from "./error/error.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+// import { SearchComponent } from "./book-search/search/search.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    // SearchComponent,
     BookSearchComponent,
     BookSearchDetailComponent,
     ReadingListComponent,
@@ -39,7 +42,8 @@ import { ErrorComponent } from "./error/error.component";
     LoginComponent,
     SignupComponent,
     LoadingSpinnerComponent,
-    ErrorComponent
+    ErrorComponent,
+    PageNotFoundComponent
     // AlertComponent
   ],
   imports: [
